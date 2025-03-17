@@ -1,9 +1,17 @@
 
 import { Testimonial } from "@/types";
 import { cn } from "@/lib/utils";
-import { QuoteIcon } from "lucide-react";
+import { QuoteIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
 
 const testimonials: Testimonial[] = [
   {
@@ -41,6 +49,13 @@ const testimonials: Testimonial[] = [
 ];
 
 export default function Testimonials() {
+  const [mounted, setMounted] = useState(false);
+
+  // This prevents hydration mismatch between server and client rendering
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <section id="testimonials" className="section-padding bg-secondary/30">
       <div className="container-width">
@@ -50,36 +65,53 @@ export default function Testimonials() {
           <div className="mt-1 h-1 w-12 bg-primary/30 mx-auto rounded-full"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={testimonial.id} 
-              className={cn(
-                "opacity-0", 
-                index % 2 === 0 ? "animate-slide-in" : "animate-slide-in-right"
-              )}
-              style={{animationDelay: `${index * 200}ms`}}
+        {mounted && (
+          <div className="max-w-4xl mx-auto">
+            <Carousel 
+              className="w-full" 
+              opts={{
+                align: "start",
+                loop: true,
+              }}
             >
-              <CardContent className="p-6 space-y-4">
-                <div className="flex items-start">
-                  <QuoteIcon className="h-8 w-8 text-primary/30 mr-4 flex-shrink-0" />
-                  <p className="text-muted-foreground italic">{testimonial.content}</p>
-                </div>
-                
-                <div className="flex items-center pt-4">
-                  <Avatar className="h-12 w-12 mr-4">
-                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
-                    <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              <CarouselContent>
+                {testimonials.map((testimonial) => (
+                  <CarouselItem key={testimonial.id} className="md:basis-1/1 lg:basis-1/1 pl-4 pr-4 py-8">
+                    <div className="p-1">
+                      <Card className="border border-primary/10 dark:bg-slate-900/50 dark:backdrop-blur-md dark:border-white/5 shadow-xl hover:shadow-primary/5 transition-all duration-300 overflow-hidden group">
+                        <CardContent className="p-6 space-y-4 relative">
+                          <div className="absolute top-0 right-0 opacity-5 text-primary">
+                            <QuoteIcon className="h-24 w-24 group-hover:scale-110 transition-transform duration-500 rotate-6" />
+                          </div>
+                          
+                          <div className="flex items-start">
+                            <QuoteIcon className="h-8 w-8 text-primary/30 mr-4 flex-shrink-0" />
+                            <p className="text-muted-foreground italic">{testimonial.content}</p>
+                          </div>
+                          
+                          <div className="flex items-center pt-4 border-t border-primary/5">
+                            <Avatar className="h-14 w-14 mr-4 ring-2 ring-primary/10 ring-offset-2 ring-offset-background">
+                              <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                              <AvatarFallback className="bg-primary/10 text-primary">{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
+                            </Avatar>
+                            <div>
+                              <h4 className="font-semibold">{testimonial.name}</h4>
+                              <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</p>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center mt-8 gap-4">
+                <CarouselPrevious className="relative static left-0 translate-y-0 dark:border-white/10 dark:hover:bg-white/5 hover:bg-primary/5 hover:text-primary" />
+                <CarouselNext className="relative static right-0 translate-y-0 dark:border-white/10 dark:hover:bg-white/5 hover:bg-primary/5 hover:text-primary" />
+              </div>
+            </Carousel>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
+import ScrollToTop from "@/components/ScrollToTop";
 import { useState, useEffect } from "react";
 
 export default function Index() {
@@ -37,6 +38,7 @@ export default function Index() {
         <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
