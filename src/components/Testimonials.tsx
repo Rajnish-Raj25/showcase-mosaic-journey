@@ -11,6 +11,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Slider } from "@/components/ui/slider";
 import { useEffect, useState } from "react";
 
 const testimonials: Testimonial[] = [
@@ -50,11 +51,36 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   const [mounted, setMounted] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [api, setApi] = useState<any>(null);
 
   // This prevents hydration mismatch between server and client rendering
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Set up event listener for slide changes
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCurrentSlide(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    // Call once to set initial value
+    onSelect();
+
+    return () => {
+      api?.off("select", onSelect);
+    };
+  }, [api]);
+
+  // Handle slider change
+  const handleSliderChange = (value: number[]) => {
+    const slideIndex = value[0];
+    api?.scrollTo(slideIndex);
+  };
 
   return (
     <section id="testimonials" className="section-padding bg-secondary/30">
@@ -69,6 +95,7 @@ export default function Testimonials() {
           <div className="max-w-4xl mx-auto">
             <Carousel 
               className="w-full" 
+              setApi={setApi}
               opts={{
                 align: "start",
                 loop: true,
@@ -105,6 +132,36 @@ export default function Testimonials() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
+              
+              {/* Slider for testimonial navigation */}
+              <div className="mt-6 max-w-md mx-auto px-8">
+                <Slider
+                  defaultValue={[0]}
+                  value={[currentSlide]}
+                  max={testimonials.length - 1}
+                  step={1}
+                  onValueChange={handleSliderChange}
+                  className="cursor-pointer"
+                />
+              </div>
+              
+              {/* Custom dot indicators */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className={cn(
+                      "w-2.5 h-2.5 rounded-full transition-all duration-300",
+                      currentSlide === index 
+                        ? "bg-primary scale-125" 
+                        : "bg-primary/30 hover:bg-primary/50"
+                    )}
+                    onClick={() => api?.scrollTo(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+              
               <div className="flex justify-center mt-8 gap-4">
                 <CarouselPrevious className="relative static left-0 translate-y-0 dark:border-white/10 dark:hover:bg-white/5 hover:bg-primary/5 hover:text-primary" />
                 <CarouselNext className="relative static right-0 translate-y-0 dark:border-white/10 dark:hover:bg-white/5 hover:bg-primary/5 hover:text-primary" />
