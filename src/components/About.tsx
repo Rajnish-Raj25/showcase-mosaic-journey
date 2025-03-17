@@ -11,7 +11,7 @@ const experiences: Experience[] = [
     position: 'Senior Software Engineer',
     period: '2021 - Present',
     description: [
-      'Leading the development of the company's flagship product using React and NestJS',
+      'Leading the development of the company\'s flagship product using React and NestJS',
       'Implementing complex features while ensuring code quality and performance',
       'Mentoring junior developers and conducting code reviews'
     ]
