@@ -43,7 +43,11 @@ const experiences: Experience[] = [
 
 export default function About() {
   return (
-    <section id="about" className="section-padding bg-secondary/30">
+    <section id="about" className="section-padding bg-secondary/30 dark:bg-secondary/10 relative">
+      {/* Background decorations */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full filter blur-3xl"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary/5 rounded-full filter blur-3xl"></div>
+      
       <div className="container-width">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-sm font-medium text-primary/70 uppercase tracking-wider">About Me</span>
@@ -52,8 +56,8 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          <div className="space-y-6 opacity-0 animate-fade-in" style={{animationDelay: '100ms'}}>
-            <h3 className="text-2xl font-display font-semibold">Hello, I'm <span className="text-primary">John Doe</span></h3>
+          <div className="space-y-6 opacity-0 animate-fade-in card-shadow p-6 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md dark:border dark:border-white/5" style={{animationDelay: '100ms'}}>
+            <h3 className="text-2xl font-display font-semibold">Hello, I'm <span className="text-gradient">John Doe</span></h3>
             
             <p className="text-muted-foreground text-balance">
               I'm a passionate software engineer with over 5 years of experience in building web applications. 
@@ -71,11 +75,11 @@ export default function About() {
             </p>
             
             <div className="flex flex-wrap gap-3 pt-4">
-              <Button variant="outline" size="sm" className="group">
+              <Button variant="outline" size="sm" className="group dark:border-white/10 dark:hover:bg-white/5">
                 <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
                 Download Resume
               </Button>
-              <Button variant="outline" size="sm" className="group">
+              <Button variant="outline" size="sm" className="group dark:border-white/10 dark:hover:bg-white/5">
                 <FileText className="mr-2 h-4 w-4" />
                 View CV
               </Button>
@@ -128,7 +132,7 @@ export default function About() {
             </div>
           </div>
           
-          <div className="opacity-0 animate-fade-in" style={{animationDelay: '300ms'}}>
+          <div className="opacity-0 animate-fade-in card-shadow p-6 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md dark:border dark:border-white/5" style={{animationDelay: '300ms'}}>
             <h3 className="text-xl font-display font-semibold mb-6">Experience</h3>
             
             <div className="space-y-8">
@@ -140,7 +144,7 @@ export default function About() {
                     index === experiences.length - 1 ? "" : "pb-8"
                   )}
                 >
-                  <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-primary -translate-x-[5px]"></div>
+                  <div className="absolute left-0 top-0 w-2 h-2 rounded-full bg-primary -translate-x-[5px] animate-ping-slow"></div>
                   
                   <div className="space-y-2">
                     <div className="flex flex-wrap items-center justify-between gap-x-2">

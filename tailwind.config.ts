@@ -92,6 +92,27 @@ export default {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
 				},
+				'typing': {
+					'0%': { width: '0' },
+					'100%': { width: '100%' }
+				},
+				'blink': {
+					'0%, 100%': { borderRightColor: 'transparent' },
+					'50%': { borderRightColor: 'currentColor' }
+				},
+				'floating': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'rotate-slow': {
+					'0%': { transform: 'rotate(0deg)' },
+					'100%': { transform: 'rotate(360deg)' }
+				},
+				'ping-slow': {
+					'0%': { transform: 'scale(1)', opacity: '1' },
+					'50%': { transform: 'scale(1.1)', opacity: '0.8' },
+					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -101,6 +122,11 @@ export default {
 				'slide-in': 'slide-in 0.6s ease-out forwards',
 				'slide-in-right': 'slide-in-right 0.6s ease-out forwards',
 				'scale-in': 'scale-in 0.6s ease-out forwards',
+				'typing': 'typing 3.5s steps(30, end)',
+				'blink': 'blink 0.7s step-end infinite',
+				'floating': 'floating 3s ease-in-out infinite',
+				'rotate-slow': 'rotate-slow 8s linear infinite',
+				'ping-slow': 'ping-slow 3s ease-in-out infinite'
 			}
 		}
 	},
