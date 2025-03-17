@@ -37,3 +37,22 @@ export interface Testimonial {
   content: string;
   image: string;
 }
+
+export interface BlogPost {
+  id: number;
+  title: string;
+  content: string;
+  excerpt: string;
+  date: string;
+  author: string;
+  tags: string[];
+  image: string;
+}
+
+export interface Service {
+  id: number;
+  title: string;
+  description: string;
+  features: string[];
+  pricing?: string;
+}

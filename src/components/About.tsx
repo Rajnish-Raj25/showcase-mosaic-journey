@@ -2,7 +2,8 @@
 import { Button } from '@/components/ui/button';
 import { Experience } from '@/types';
 import { cn } from '@/lib/utils';
-import { Code, Github, Linkedin, Twitter } from 'lucide-react';
+import { Code, Github, Linkedin, Twitter, Download, FileText } from 'lucide-react';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
 const experiences: Experience[] = [
   {
@@ -69,19 +70,61 @@ export default function About() {
               I'm also passionate about poetry and ghazals in my free time.
             </p>
             
+            <div className="flex flex-wrap gap-3 pt-4">
+              <Button variant="outline" size="sm" className="group">
+                <Download className="mr-2 h-4 w-4 group-hover:animate-bounce" />
+                Download Resume
+              </Button>
+              <Button variant="outline" size="sm" className="group">
+                <FileText className="mr-2 h-4 w-4" />
+                View CV
+              </Button>
+            </div>
+            
             <div className="flex gap-4 pt-2">
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-primary hover:text-primary/80 transition-colors">
-                <Code className="h-5 w-5" />
-              </a>
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+                    <Github className="h-5 w-5" />
+                  </a>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto">
+                  <p className="text-sm">Check my GitHub repositories</p>
+                </HoverCardContent>
+              </HoverCard>
+              
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+                    <Linkedin className="h-5 w-5" />
+                  </a>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto">
+                  <p className="text-sm">Connect on LinkedIn</p>
+                </HoverCardContent>
+              </HoverCard>
+              
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+                    <Twitter className="h-5 w-5" />
+                  </a>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto">
+                  <p className="text-sm">Follow me on Twitter</p>
+                </HoverCardContent>
+              </HoverCard>
+              
+              <HoverCard>
+                <HoverCardTrigger asChild>
+                  <a href="#" className="text-primary hover:text-primary/80 transition-colors">
+                    <Code className="h-5 w-5" />
+                  </a>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-auto">
+                  <p className="text-sm">View my coding profiles</p>
+                </HoverCardContent>
+              </HoverCard>
             </div>
           </div>
           
