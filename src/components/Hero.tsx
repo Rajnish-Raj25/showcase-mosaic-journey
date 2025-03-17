@@ -20,7 +20,7 @@ export default function Hero() {
       <div className="container-width">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           <div className="md:col-span-7 space-y-6 md:space-y-8 animate-fade-in">
-            <div className="bg-primary/5 dark:bg-primary/10 text-primary/90 dark:text-primary/90 px-4 py-1.5 rounded-full text-sm font-medium inline-block">
+            <div className="bg-primary/5 dark:bg-primary/10 text-primary/90 dark:text-primary/90 px-4 py-1.5 rounded-full text-md font-medium inline-block">
               <TypeWriter 
                 words={[
                   "Software Engineer",

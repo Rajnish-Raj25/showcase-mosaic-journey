@@ -94,7 +94,12 @@ const services: Service[] = [
   }
 ];
 
+
 export default function Services() {
+  const handleClick = () => {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="services" className="section-padding bg-background">
       <div className="container-width">
@@ -132,7 +137,7 @@ export default function Services() {
                 </ul>
               </CardContent>
               <CardFooter>
-                <Button variant="outline" className="w-full">Request a Quote</Button>
+                <Button variant="outline" className="w-full" onClick={handleClick}>Request a Quote</Button>
               </CardFooter>
             </Card>
           ))}
