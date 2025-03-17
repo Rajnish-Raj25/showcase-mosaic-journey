@@ -68,7 +68,7 @@ export default function Hero() {
                 <div className="absolute -right-16 -bottom-16 w-32 h-32 bg-primary/10 rounded-full filter blur-2xl"></div>
                 <div className="absolute -left-16 -top-16 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=2662&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                  src="./Rajnish.jpg" 
                   alt="Professional profile"
                   className="w-full h-full object-cover object-center"
                 />

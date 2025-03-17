@@ -57,10 +57,10 @@ export default function About() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6 opacity-0 animate-fade-in card-shadow p-6 rounded-xl bg-white dark:bg-slate-900/50 dark:backdrop-blur-md dark:border dark:border-white/5" style={{animationDelay: '100ms'}}>
-            <h3 className="text-2xl font-display font-semibold">Hello, I'm <span className="text-gradient">John Doe</span></h3>
+            <h3 className="text-2xl font-display font-semibold">Hello, I'm <span className="text-gradient">Rajnish Raj</span></h3>
             
             <p className="text-muted-foreground text-balance">
-              I'm a passionate software engineer with over 5 years of experience in building web applications. 
+              I'm a passionate software engineer with over 3+ years of experience in building web applications. 
               My expertise lies in creating intuitive, efficient, and scalable solutions that solve real-world problems.
             </p>
             
