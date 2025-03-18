@@ -36,6 +36,7 @@ export interface Testimonial {
   company: string;
   content: string;
   image: string;
+  rating: number;
 }
 
 export interface BlogPost {
@@ -55,4 +56,11 @@ export interface Service {
   description: string;
   features: string[];
   pricing?: string;
+}
+
+export interface Message {
+  id: string;
+  sender: "user" | "assistant";
+  text: string;
+  timestamp: Date;
 }

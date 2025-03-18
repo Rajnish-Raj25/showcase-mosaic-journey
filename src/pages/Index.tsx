@@ -10,6 +10,7 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ThemeToggle from "@/components/ThemeToggle";
 import ScrollToTop from "@/components/ScrollToTop";
+import ChatAssistant from "@/components/ChatAssistant"; 
 import { useState, useEffect } from "react";
 
 export default function Index() {
@@ -39,6 +40,7 @@ export default function Index() {
       </main>
       <Footer />
       <ScrollToTop />
+      <ChatAssistant />
     </>
   );
 }
