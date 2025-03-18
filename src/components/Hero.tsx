@@ -32,13 +32,14 @@ export default function Hero() {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold leading-tight md:leading-tight lg:leading-tight text-balance">
+              <span className="block">Hi, I'm <span className="text-gradient">Rajnish Raj</span></span>
               <span className="block">Building digital</span>
               <span className="block">experiences that</span>
               <span className="block text-gradient">matter.</span>
             </h1>
             
             <p className="text-lg md:text-xl text-muted-foreground max-w-xl text-balance">
-              Full-Stack Developer specializing in React, NestJS, and crafting exceptional digital experiences that bring value to users.
+              Full-Stack Developer specializing in React, NestJS, and crafting exceptional digital experiences that bring value to users. I'm <span className="font-semibold text-primary/80">Rajnish Raj</span>, also known as <span className="font-semibold text-primary/80">Rajnish-Tech</span> online.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
@@ -69,7 +70,7 @@ export default function Hero() {
                 <div className="absolute -left-16 -top-16 w-32 h-32 bg-blue-500/10 rounded-full filter blur-2xl"></div>
                 <img 
                   src="./Rajnish.jpg" 
-                  alt="Professional profile"
+                  alt="Rajnish Raj - Software Engineer"
                   className="w-full h-full object-cover object-center"
                 />
               </div>
